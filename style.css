@@ -1,0 +1,50 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 20px;
+   
+}
+main {
+    /* background: linear-gradient(135deg, #6e8efb, #a777e3); */
+    background-color: #6787ef;
+    padding: 30px; 
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
+}
+
+/* .container {
+    padding: 30px; 
+    margin: 20px auto; 
+    width: 60%;
+    border-radius: 10px;
+    
+} */
+
+.seguro { color: green; }
+.multado { color: red; font-weight: bold; animation: piscar 1s infinite alternate; }
+@keyframes piscar {
+    from { opacity: 1; }
+    to { opacity: 0.5; }
+}
+table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    width: 60%;
+    
+}
+th {
+    background: #de327a;
+}
+th, td {
+    border: 1px solid black;
+    padding: 10px;
+}
+button {
+    margin-top: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+tr {
+    background-color: rgb(255, 255, 255);
+}
