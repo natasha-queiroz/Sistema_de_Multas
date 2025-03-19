@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Multas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+           
+        }
+        main {
+            /* background: linear-gradient(135deg, #6e8efb, #a777e3); */
+            background-color: #6787ef;
+            padding: 30px; 
+            font-size: 20px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            
+        }
+
+        /* .container {
+            padding: 30px; 
+            margin: 20px auto; 
+            width: 60%;
+            border-radius: 10px;
+            
+        } */
+
+        .seguro { color: green; }
+        .multado { color: red; font-weight: bold; animation: piscar 1s infinite alternate; }
+        @keyframes piscar {
+            from { opacity: 1; }
+            to { opacity: 0.5; }
+        }
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 60%;
+            
+        }
+        th {
+            background: #de327a;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            cursor: pointer;
+        }
+        tr {
+            background-color: rgb(255, 255, 255);
+        }
+        
+    </style>
+</head>
+<body>
+    <main>
+            <h1>Sistema de Multas</h1>
+            
+            <label for="tipoVia">Escolha o tipo de via:</label>
+            <select id="tipoVia">
+                <option value="50">Área Urbana - 50Km/h</option>
+                <option value="80">Rodovia - 80Km/h</option>
+                <option value="100">Autoestrada - 100Km/h</option>
+            </select>
+            <br><br>
+            
+            Velocidade do carro: <input type="number" id="txtvel"> Km/h
+            <input type="button" value="Verificar" onclick="calcular()">
+            <!-- <button onclick="limparHistorico()">Limpar Histórico</button> -->
+        
+        <div id="res"></div>
+        
+        <h2>Histórico de Verificações</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Velocidade</th>
+                    <th>Limite</th>
+                    <th>Resultado</th>
+                </tr>
+            </thead>
+            <tbody id="historico"></tbody>
+        </table>
+        
+        <script>
+            function calcular() {
+                var txtv = document.getElementById('txtvel');
+                var tipoVia = document.getElementById('tipoVia');
+                var res = document.getElementById('res');
+                var historico = document.getElementById('historico');
+        
+                var vel = Number(txtv.value);
+                var limite = Number(tipoVia.value);
+        
+                if (isNaN(vel) || vel <= 0) {
+                    res.innerHTML = '<p class="multado">Por favor, insira uma velocidade válida.</p>';
+                    return;
+                }
+        
+                res.innerHTML = `Sua velocidade atual é de <strong>${vel} Km/h</strong><br>`;
+        
+                let resultado = "<p class='seguro'>Velocidade dentro do limite permitido.</p>";
+                if (vel > limite) {
+                    let gravidade = "";
+        
+                    if (vel - limite <= 10) {
+                        gravidade = "Leve";
+                    } else if (vel - limite <= 20) {
+                        gravidade = "Média";
+                    } else if (vel - limite <= 30) {
+                        gravidade = "Grave";
+                    } else {
+                        gravidade = "Gravíssima";
+                    }
+        
+                    resultado = `<p class='multado'>Você está multado! Infração: <strong>${gravidade}</strong>.</p>`;
+                }
+        
+                res.innerHTML += resultado;
+                res.innerHTML += `<p>Dirija sempre com cinto de segurança!</p>`;
+        
+                // Adicionar ao histórico
+                var novaLinha = document.createElement('tr');
+                novaLinha.innerHTML = `
+                    <td>${vel} Km/h</td>
+                    <td>${limite} Km/h</td>
+                    <td>${resultado.replace(/<[^>]*>/g, "")}</td>
+                `;
+                historico.appendChild(novaLinha);
+            }
+            function limparHistorico() {
+                document.getElementById('historico').innerHTML = "";
+            }
+        </script>
+    </main>
+</body>
+</html>
