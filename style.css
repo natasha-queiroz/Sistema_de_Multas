@@ -4,6 +4,7 @@ body {
     margin: 20px;
    
 }
+
 main {
     /* background: linear-gradient(135deg, #6e8efb, #a777e3); */
     background-color: #6787ef;
@@ -27,15 +28,18 @@ main {
     from { opacity: 1; }
     to { opacity: 0.5; }
 }
+
 table {
     margin: 20px auto;
     border-collapse: collapse;
     width: 60%;
     
 }
+
 th {
     background: #de327a;
 }
+
 th, td {
     border: 1px solid black;
     padding: 10px;
