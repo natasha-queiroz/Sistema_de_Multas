@@ -1,4 +1,5 @@
-🛣️ Sistema de Multas 🚗💨
+# 🛣️ Sistema de Multas 🚗💨
+
 Um pequeno sistema para verificar se um veículo está acima do limite de velocidade permitido para diferentes tipos de vias.
 
 🎯 Funcionalidades
@@ -7,7 +8,7 @@ Um pequeno sistema para verificar se um veículo está acima do limite de veloci
 ✅ Exibição da infração e gravidade (Leve, Média, Grave, Gravíssima)
 ✅ Histórico das verificações
 
-### 🚀 Tecnologias Utilizadas
+# 🚀 Tecnologias Utilizadas
 HTML5
 CSS3
 JavaScript
